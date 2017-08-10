@@ -1,0 +1,4 @@
+= redux-examples
+
+. link:00-reducer/README.adoc[reducer]
+. link:01-reducer/README.md[redux-bank]

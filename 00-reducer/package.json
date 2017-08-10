@@ -1,0 +1,16 @@
+{
+  "name": "00-reducer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "6.0.6"
+  },
+  "scripts": {
+    "prestart": "yarn install",
+    "start": "serve --port 3000 --open --single"
+  },
+  "dependencies": {
+    "materialize-css": "0.100.1"
+  }
+}
