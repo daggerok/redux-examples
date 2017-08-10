@@ -14,11 +14,12 @@ const exec = (e, func, ref) => {
 
   if (!e.keyCode || e.keyCode !== 13) return;
 
-  e.preventDefault();
+  const int = parseInt(ref.value, 10);
+  if (isNaN(int)) return;
 
   func(ref.value);
   ref.value = '';
-  // ref.focus();
+  ref.focus();
 };
 
 const Deposit = ({ onDeposit }) => {
@@ -26,11 +27,9 @@ const Deposit = ({ onDeposit }) => {
   let ref;
 
   return (
-    <form>
-      <input placeholder="Deposit"
-             ref={input => ref = input}
-             onKeyDown={e => exec(e, onDeposit, ref)}/>
-    </form>
+    <input placeholder="Deposit"
+           ref={input => ref = input}
+           onKeyDown={e => exec(e, onDeposit, ref)}/>
   );
 };
 
@@ -43,11 +42,9 @@ const Withdrawal = ({ onWithdrawal }) => {
   let ref;
 
   return (
-    <form>
-      <input placeholder="Withdrawal"
-             ref={input => ref = input}
-             onKeyDown={e => exec(e, onWithdrawal, ref)}/>
-    </form>
+    <input placeholder="Withdrawal"
+           ref={input => ref = input}
+           onKeyDown={e => exec(e, onWithdrawal, ref)}/>
   );
 };
 
@@ -56,6 +53,7 @@ Withdrawal.propTypes = {
 };
 
 class App extends Component {
+
   constructor(props) {
     super(props);
 
