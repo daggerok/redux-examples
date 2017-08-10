@@ -26,11 +26,9 @@ const Deposit = ({ onDeposit }) => {
 
   let ref;
 
-  return (
-    <input placeholder="Deposit"
-           ref={input => ref = input}
-           onKeyDown={e => exec(e, onDeposit, ref)}/>
-  );
+  return <input placeholder="Deposit"
+                ref={input => ref = input}
+                onKeyDown={e => exec(e, onDeposit, ref)}/>;
 };
 
 Deposit.propTypes = {
@@ -41,11 +39,9 @@ const Withdrawal = ({ onWithdrawal }) => {
 
   let ref;
 
-  return (
-    <input placeholder="Withdrawal"
-           ref={input => ref = input}
-           onKeyDown={e => exec(e, onWithdrawal, ref)}/>
-  );
+  return <input placeholder="Withdrawal"
+                ref={input => ref = input}
+                onKeyDown={e => exec(e, onWithdrawal, ref)}/>;
 };
 
 Withdrawal.propTypes = {

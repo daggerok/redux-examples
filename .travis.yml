@@ -18,7 +18,7 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 0-template 00-reducer 01-redux-bank; do
+    for path in 0-template 00-reducer 01-react-bank 02-redux-bank; do
       export TARGET="$ROOT/$path";
       cd $TARGET;
       yarn install;
