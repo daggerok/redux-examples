@@ -8,6 +8,8 @@
   },
   "scripts": {
     "prestart": "yarn install",
+    "prebuild": "yarn install",
+    "build": "echo done",
     "start": "serve --port 3000 --open --single"
   },
   "dependencies": {

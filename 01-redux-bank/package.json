@@ -8,6 +8,8 @@
     "react-scripts": "1.0.11"
   },
   "scripts": {
+    "prestart": "yarn install",
+    "prebuild": "yarn install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
