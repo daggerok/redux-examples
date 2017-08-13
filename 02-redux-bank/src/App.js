@@ -10,12 +10,14 @@ Display.propTypes = {
   balance: PropTypes.number,
 };
 
+const money = amount => parseFloat(parseFloat(amount || 0.0).toFixed(2));
+
 const exec = (e, func, ref) => {
 
   if (!e.keyCode || e.keyCode !== 13) return;
 
-  const int = parseInt(ref.value, 10);
-  if (isNaN(int)) return;
+  const amount = money(ref.value);
+  if (isNaN(amount)) return;
 
   func(ref.value);
   ref.value = '';
@@ -54,29 +56,30 @@ class App extends Component {
     super(props);
 
     this.state = {
-      balance: this.props.balance,
+      balance: money(this.props.balance),
     };
   }
 
-  onDeposit = amount => {
+  onDeposit = deposit => {
 
-    const int = parseInt(amount, 10);
+    const amount = money(deposit);
 
-    if (int <= 0) return;
+    if (amount <= 0) return;
 
     this.setState({
-      balance: this.state.balance + int,
+      balance: money(this.state.balance + amount),
     });
   };
 
-  onWithdrawal = amount => {
+  onWithdrawal = withdrawal => {
 
-    const int = parseInt(amount, 10);
+    const amount = money(withdrawal, 10);
 
-    if (this.state.balance < int) return;
+    if (amount < 0) return;
+    if (this.state.balance < amount) return;
 
     this.setState({
-      balance: this.state.balance - int,
+      balance: money(this.state.balance - amount),
     });
   };
 
@@ -99,7 +102,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  balance: 0,
+  balance: 0.0,
 };
 
 export default App;

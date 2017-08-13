@@ -48,35 +48,37 @@ Withdrawal.propTypes = {
   onWithdrawal: PropTypes.func,
 };
 
+const money = amount => parseFloat(parseFloat(amount || 0.0).toFixed(2));
+
 class App extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      balance: this.props.balance,
+      balance: money(this.props.balance),
     };
   }
 
   onDeposit = amount => {
 
-    const int = parseInt(amount, 10);
+    const float = money(amount);
 
-    if (int <= 0) return;
+    if (float <= 0) return;
 
     this.setState({
-      balance: this.state.balance + int,
+      balance: money(this.state.balance + float),
     });
   };
 
   onWithdrawal = amount => {
 
-    const int = parseInt(amount, 10);
+    const float = money(amount);
 
-    if (this.state.balance < int) return;
+    if (this.state.balance < float) return;
 
     this.setState({
-      balance: this.state.balance - int,
+      balance: money(this.state.balance - float),
     });
   };
 
@@ -99,7 +101,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  balance: 0,
+  balance: 0.0,
 };
 
 export default App;

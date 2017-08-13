@@ -1,6 +1,6 @@
 {
-  "short_name": "App",
-  "name": "App Template",
+  "short_name": "Redux Examples",
+  "name": "Redux Examples",
   "icons": [
     {
       "src": "favicon.ico",
