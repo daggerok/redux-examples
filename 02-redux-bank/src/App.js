@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { createStore } from 'redux';
+//
 import './App.css';
+import reducer from './reducer';
+
+const store = createStore(reducer);
 
 const Display = ({ balance }) => <div>
   <p>Account balance: {balance}</p>
