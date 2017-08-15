@@ -26,7 +26,7 @@ const Deposit = ({ onDeposit }) => {
 
   let ref;
 
-  return <input placeholder="Deposit"
+  return <input placeholder='Deposit'
                 ref={input => ref = input}
                 onKeyDown={e => exec(e, onDeposit, ref)}/>;
 };
@@ -39,7 +39,7 @@ const Withdrawal = ({ onWithdrawal }) => {
 
   let ref;
 
-  return <input placeholder="Withdrawal"
+  return <input placeholder='Withdrawal'
                 ref={input => ref = input}
                 onKeyDown={e => exec(e, onWithdrawal, ref)}/>;
 };
@@ -84,8 +84,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="parent">
-        <div className="child">
+      <div className='parent'>
+        <div className='child'>
+          <h2>React Bank</h2>
           <h3>Let's get started!</h3>
           <Display balance={this.state.balance}/>
           <Deposit onDeposit={this.onDeposit}/>

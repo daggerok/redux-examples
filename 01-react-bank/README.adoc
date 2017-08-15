@@ -1,0 +1,8 @@
+= React Bank
+
+This submodule contains simple React Bank application
+
+[source,bash]
+yarn start
+yarn build
+yarn deploy

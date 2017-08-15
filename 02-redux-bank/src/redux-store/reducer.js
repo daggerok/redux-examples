@@ -1,5 +1,5 @@
-import { DEPOSIT, WITHDRAWAL } from "./types";
-import money from "../utils/money";
+import { DEPOSIT, WITHDRAWAL } from './types';
+import money from '../utils/money';
 
 export default (state = { balance: 0 }, action) => {
 

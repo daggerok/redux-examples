@@ -1,4 +1,4 @@
-import { DEPOSIT, WITHDRAWAL } from "./types";
+import { DEPOSIT, WITHDRAWAL } from './types';
 
 export const doDeposit = amount => ({
   type: DEPOSIT,

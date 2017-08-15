@@ -5,14 +5,15 @@ import { createStore } from 'redux';
 import './App.css';
 //
 import Display from './components/Display';
-import Deposit from './components/Deposit'
-import Withdrawal from './components/Withdrawal'
+import Deposit from './components/Deposit';
+import Withdrawal from './components/Withdrawal';
 //
 import reducer from '../redux-store/reducer';
-import { doDeposit, doWithdrawal } from "../redux-store/actions";
+import { doDeposit, doWithdrawal } from '../redux-store/actions';
 
-const App = ({ balance, doDeposit, doWithdrawal }) => <div className="parent">
-  <div className="child">
+const App = ({ balance, doDeposit, doWithdrawal }) => <div className='parent'>
+  <div className='child'>
+    <h2>Redux Bank</h2>
     <h3>Let's get started!</h3>
     <Display balance={balance}/>
     <Deposit doDeposit={doDeposit}/>
@@ -28,7 +29,7 @@ App.propTypes = {
 
 const store = createStore(reducer);
 
-const AppContainer = class AppContainer extends Component {
+const ReduxApp = class ReduxApp extends Component {
 
   componentDidMount = () =>
     store.subscribe(() => {
@@ -49,4 +50,4 @@ const AppContainer = class AppContainer extends Component {
   };
 };
 
-export default AppContainer;
+export default ReduxApp;

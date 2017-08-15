@@ -4,11 +4,11 @@ import './vendors';
 import React from 'react';
 import ReactDOM from 'react-dom';
 //
-import AppContainer from './App/App';
+import ReduxApp from './App/App';
 import registerServiceWorker from './service-worker/registerServiceWorker';
 //
 ReactDOM.render(
-  <AppContainer />,
+  <ReduxApp />,
   document.getElementById('root')
 );
 //
