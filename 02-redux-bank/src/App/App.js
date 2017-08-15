@@ -11,16 +11,14 @@ import Withdrawal from './components/Withdrawal'
 import reducer from '../redux-store/reducer';
 import { doDeposit, doWithdrawal } from "../redux-store/actions";
 
-const App = ({ balance, doDeposit, doWithdrawal }) => (
-  <div className="parent">
-    <div className="child">
-      <h3>Let's get started!</h3>
-      <Display balance={balance}/>
-      <Deposit doDeposit={doDeposit}/>
-      <Withdrawal doWithdrawal={doWithdrawal}/>
-    </div>
+const App = ({ balance, doDeposit, doWithdrawal }) => <div className="parent">
+  <div className="child">
+    <h3>Let's get started!</h3>
+    <Display balance={balance}/>
+    <Deposit doDeposit={doDeposit}/>
+    <Withdrawal doWithdrawal={doWithdrawal}/>
   </div>
-);
+</div>;
 
 App.propTypes = {
   balance: PropTypes.number,
@@ -30,30 +28,25 @@ App.propTypes = {
 
 const store = createStore(reducer);
 
-class AppContainer extends Component {
+const AppContainer = class AppContainer extends Component {
 
-  componentDidMount() {
+  componentDidMount = () =>
     store.subscribe(() => {
       this.forceUpdate();
     });
-  }
 
-  deposit(amount) {
+  deposit = amount =>
     store.dispatch(doDeposit(amount));
-  }
 
-  withdrawal(amount) {
+  withdrawal = amount =>
     store.dispatch(doWithdrawal(amount));
-  }
 
-  render() {
+  render = () => {
     const state = store.getState();
-    return (
-      <App balance={state.balance}
-           doDeposit={this.deposit}
-           doWithdrawal={this.withdrawal} />
-    );
-  }
-}
+    return <App balance={state.balance}
+                doDeposit={this.deposit}
+                doWithdrawal={this.withdrawal} />;
+  };
+};
 
 export default AppContainer;
