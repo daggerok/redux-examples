@@ -6,6 +6,63 @@ This submodule contains simple Redux Bank application
 .. reducer (state, action, action.type, action.payload)
 .. store (createStore, subscribe, dispatch)
 
+=== Reducer
+
+.reducer.js
+[source,jacascript]
+----
+export default (state = { /* initial state */ balance: 0 }, action) => {
+
+  if (unknown(action)) return state; // previous state
+
+  switch (action.type) {
+    case 'some-action-type':
+      return { /* update to new state usin state and action arguments depends on type */ };
+    ...
+    default:
+      return state;
+  }
+};
+----
+
+=== Redux Store
+
+.App.jsx
+[source,jacascript]
+----
+import { createStore } from 'redux';
+import reducer from '../redux-store/reducer';
+import { doAction } from '../redux-store/actions';
+
+const store = createStore(reducer);
+
+class ReduxApp extends Component {
+
+  componentDidMount = () =>
+    store.subscribe(() => {
+      this.forceUpdate(); // re-render component if state was changed
+    });
+
+  doAction = payload =>
+    store.dispatch(doAction(payload));
+
+  // ...
+}
+----
+
+=== Actions
+
+.actions.js
+[source,jacascript]
+----
+export const doAction = payload => ({
+  type: 'some-action-type',
+  payload,
+});
+----
+
+== build, run, deploy
+
 [source,bash]
 yarn start
 yarn build

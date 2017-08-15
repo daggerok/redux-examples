@@ -2,5 +2,7 @@
 
 This submodule contains example of simple reduce (reducer) function
 
+== ruu
+
 [source,bash]
 yarn start

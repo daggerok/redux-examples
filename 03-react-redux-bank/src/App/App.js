@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { createStore } from 'redux';
+import { connect } from 'react-redux';
 //
 import './App.css';
 //
@@ -8,7 +8,6 @@ import Display from './components/Display';
 import Deposit from './components/Deposit';
 import Withdrawal from './components/Withdrawal';
 //
-import reducer from '../redux-store/reducer';
 import { doDeposit, doWithdrawal } from '../redux-store/actions';
 
 const App = ({ balance, doDeposit, doWithdrawal }) => <div className='parent'>
@@ -27,27 +26,15 @@ App.propTypes = {
   onWithdrawal: PropTypes.func
 };
 
-const store = createStore(reducer);
+const mapStateToProps = state => ({
+  balance: state.balance,
+});
 
-const ReduxApp = class ReduxApp extends Component {
+const mapDispatchToProps = dispatch => ({
+  onDeposit: amount => dispatch(doDeposit(amount)),
+  onWithdrawal: amount => dispatch(doWithdrawal(amount)),
+});
 
-  componentDidMount = () =>
-    store.subscribe(() => {
-      this.forceUpdate();
-    });
+const ReactReduxApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
-  deposit = amount =>
-    store.dispatch(doDeposit(amount));
-
-  withdrawal = amount =>
-    store.dispatch(doWithdrawal(amount));
-
-  render = () => {
-    const state = store.getState();
-    return <App balance={state.balance}
-                doDeposit={this.deposit}
-                doWithdrawal={this.withdrawal} />;
-  };
-};
-
-export default ReduxApp;
+export default ReactReduxApp;

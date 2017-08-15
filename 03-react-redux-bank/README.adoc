@@ -8,6 +8,30 @@ This submodule contains simple Redux Bank application
 . add react-redux library:
 .. connect
 
+.App.jsx
+[source,jacascript]
+----
+import { connect } from 'react-redux';
+import { doAction } from '../redux-store/actions';
+
+// same as: <SomeCmponent someValue={state.payload} .../>
+const mapStateToProps = state => ({
+  someValue: state.payload,
+});
+
+// same as: <SomeCmponent onAction={this.doAction} .../>
+const mapDispatchToProps = dispatch => ({
+  onAction: payload => dispatch(onAction(payload)),
+});
+
+// so now we can pass our mappers to connect
+// and it will bound all to component props:
+const ReactReduxApp = connect(mapStateToProps, mapDispatchToProps)(SomeComponent);
+export default ReactReduxApp;
+----
+
+== build, run, deploy
+
 [source,bash]
 yarn start
 yarn build
