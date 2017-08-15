@@ -4,8 +4,7 @@ import { createStore } from 'redux';
 //
 import './App.css';
 import reducer from './reducer';
-
-const store = createStore(reducer);
+import { doDeposit, doWithdrawal } from "./actions";
 
 const Display = ({ balance }) => <div>
   <p>Account balance: {balance}</p>
@@ -15,99 +14,81 @@ Display.propTypes = {
   balance: PropTypes.number,
 };
 
-const money = amount => parseFloat(parseFloat(amount || 0.0).toFixed(2));
-
-const exec = (e, func, ref) => {
-
+const exec = (e, action, ref) => {
   if (!e.keyCode || e.keyCode !== 13) return;
-
-  const amount = money(ref.value);
-  if (isNaN(amount)) return;
-
-  func(ref.value);
+  action(+ref.value);
   ref.value = '';
-  ref.focus();
 };
 
-const Deposit = ({ onDeposit }) => {
-
+const Deposit = ({ doDeposit }) => {
   let ref;
-
   return <input placeholder="Deposit"
                 ref={input => ref = input}
-                onKeyDown={e => exec(e, onDeposit, ref)}/>;
+                onKeyDown={e => {
+                  exec(e, doDeposit, ref);
+                }}/>;
 };
 
 Deposit.propTypes = {
-  onDeposit: PropTypes.func,
+  doDeposit: PropTypes.func,
 };
 
-const Withdrawal = ({ onWithdrawal }) => {
-
+const Withdrawal = ({ doWithdrawal }) => {
   let ref;
-
   return <input placeholder="Withdrawal"
                 ref={input => ref = input}
-                onKeyDown={e => exec(e, onWithdrawal, ref)}/>;
+                onKeyDown={e => {
+                  exec(e, doWithdrawal, ref);
+                }}/>;
 };
 
 Withdrawal.propTypes = {
-  onWithdrawal: PropTypes.func,
+  doWithdrawal: PropTypes.func,
 };
 
-class App extends Component {
+const App = ({ balance, doDeposit, doWithdrawal }) => (
+  <div className="parent">
+    <div className="child">
+      <h3>Let's get started!</h3>
+      <Display balance={balance}/>
+      <Deposit doDeposit={doDeposit}/>
+      <Withdrawal doWithdrawal={doWithdrawal}/>
+    </div>
+  </div>
+);
 
-  constructor(props) {
-    super(props);
+App.propTypes = {
+  balance: PropTypes.number,
+  onDeposit: PropTypes.func,
+  onWithdrawal: PropTypes.func
+};
 
-    this.state = {
-      balance: money(this.props.balance),
-    };
+const store = createStore(reducer);
+
+class AppContainer extends Component {
+
+  componentDidMount() {
+    store.subscribe(() => {
+      this.forceUpdate();
+    });
   }
 
-  onDeposit = deposit => {
+  deposit(amount) {
+    store.dispatch(doDeposit(amount));
+  }
 
-    const amount = money(deposit);
-
-    if (amount <= 0) return;
-
-    this.setState({
-      balance: money(this.state.balance + amount),
-    });
-  };
-
-  onWithdrawal = withdrawal => {
-
-    const amount = money(withdrawal, 10);
-
-    if (amount < 0) return;
-    if (this.state.balance < amount) return;
-
-    this.setState({
-      balance: money(this.state.balance - amount),
-    });
-  };
+  withdrawal(amount) {
+    store.dispatch(doWithdrawal(amount));
+  }
 
   render() {
+    const state = store.getState();
     return (
-      <div className="parent">
-        <div className="child">
-          <h3>Let's get started!</h3>
-          <Display balance={this.state.balance}/>
-          <Deposit onDeposit={this.onDeposit}/>
-          <Withdrawal onWithdrawal={this.onWithdrawal}/>
-        </div>
-      </div>
+      <App balance={state.balance}
+           doDeposit={this.deposit}
+           doWithdrawal={this.withdrawal} />
     );
   }
 }
 
-App.propTypes = {
-  balance: PropTypes.number,
-};
-
-App.defaultProps = {
-  balance: 0.0,
-};
-
-export default App;
+export default AppContainer;
