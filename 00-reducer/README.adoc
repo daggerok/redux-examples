@@ -1,4 +1,6 @@
-= reducer
+= Reducer Bank
+
+This submodule contains example of simple reduce (reducer) function
 
 [source,bash]
 yarn start

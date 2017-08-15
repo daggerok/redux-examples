@@ -1,0 +1,11 @@
+= React Redux Bank
+
+This submodule contains simple Redux Bank application
+
+. add redux library
+. add react-redux library
+
+[source,bash]
+yarn start
+yarn build
+yarn deploy
