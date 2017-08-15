@@ -33,13 +33,16 @@ script:
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     done;
 after_script:
+  - yarn install
   - yarn outdated
+  - yarn upgrade
+  #
   - yarn global add npm-check-updates
   - ncu
-  - yarn install
-  - yarn list
+  - ncu -u
+  #
   - yarn upgrade
-  - yarn list
+  - npm outdate
 cache:
   directories:
     - node_modules/
