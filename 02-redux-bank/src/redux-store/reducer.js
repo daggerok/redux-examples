@@ -1,6 +1,5 @@
 import { DEPOSIT, WITHDRAWAL } from "./types";
-
-const money = amount => parseFloat(parseFloat(amount || 0.0).toFixed(2));
+import money from "../utils/money";
 
 export default (state = { balance: 0 }, action) => {
 

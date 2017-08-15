@@ -3,48 +3,13 @@ import PropTypes from 'prop-types';
 import { createStore } from 'redux';
 //
 import './App.css';
-import reducer from './reducer';
-import { doDeposit, doWithdrawal } from "./actions";
-
-const Display = ({ balance }) => <div>
-  <p>Account balance: {balance}</p>
-</div>;
-
-Display.propTypes = {
-  balance: PropTypes.number,
-};
-
-const exec = (e, action, ref) => {
-  if (!e.keyCode || e.keyCode !== 13) return;
-  action(+ref.value);
-  ref.value = '';
-};
-
-const Deposit = ({ doDeposit }) => {
-  let ref;
-  return <input placeholder="Deposit"
-                ref={input => ref = input}
-                onKeyDown={e => {
-                  exec(e, doDeposit, ref);
-                }}/>;
-};
-
-Deposit.propTypes = {
-  doDeposit: PropTypes.func,
-};
-
-const Withdrawal = ({ doWithdrawal }) => {
-  let ref;
-  return <input placeholder="Withdrawal"
-                ref={input => ref = input}
-                onKeyDown={e => {
-                  exec(e, doWithdrawal, ref);
-                }}/>;
-};
-
-Withdrawal.propTypes = {
-  doWithdrawal: PropTypes.func,
-};
+//
+import Display from './components/Display';
+import Deposit from './components/Deposit'
+import Withdrawal from './components/Withdrawal'
+//
+import reducer from '../redux-store/reducer';
+import { doDeposit, doWithdrawal } from "../redux-store/actions";
 
 const App = ({ balance, doDeposit, doWithdrawal }) => (
   <div className="parent">

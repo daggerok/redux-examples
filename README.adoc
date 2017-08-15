@@ -1,4 +1,5 @@
 = redux-examples image:https://travis-ci.org/daggerok/redux-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/redux-examples"]
 
 . link:00-reducer/README.adoc[reducer]
-. link:01-redux-bank/README.md[redux-bank]
+. link:01-react-bank/README.md[react-bank]
+. link:02-redux-bank/README.md[redux-bank]
