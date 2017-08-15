@@ -18,15 +18,29 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 0-template 00-reducer 01-react-bank 02-redux-bank; do
+    for path in 00-reducer; do
       export TARGET="$ROOT/$path";
       cd $TARGET;
       yarn install;
       yarn build;
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     done;
+  - >
+    for path in 0-template 01-react-bank 02-redux-bank 03-react-redux-bank; do
+      export TARGET="$ROOT/$path";
+      cd $TARGET;
+      yarn build;
+      if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+    done;
 after_script:
-  - npm outdated
+  - yarn outdated
+  - yarn global add npm-check-updates
+  - ncu
+  - yarn install
+  - yarn list
+  - yarn upgrade
+  - yarn list
 cache:
   directories:
     - node_modules/
+    - $HOME/.npm
