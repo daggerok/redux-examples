@@ -32,9 +32,13 @@ const store = createStore(reducer);
 const ReduxApp = class ReduxApp extends Component {
 
   componentDidMount = () =>
-    store.subscribe(() => {
+    this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
     });
+
+  componentWillUnmount() {
+    if (this.unsubscribe) this.unsubscribe();
+  };
 
   deposit = amount =>
     store.dispatch(doDeposit(amount));

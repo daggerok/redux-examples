@@ -1,8 +1,8 @@
+import './App.css';
+//
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-//
-import './App.css';
 //
 import Display from './components/Display';
 import Deposit from './components/Deposit';
@@ -10,13 +10,13 @@ import Withdrawal from './components/Withdrawal';
 //
 import { doDeposit, doWithdrawal } from '../redux-store/actions';
 
-const App = ({ balance, doDeposit, doWithdrawal }) => <div className='parent'>
+const App = ({ balance, onDeposit, onWithdrawal }) => <div className='parent'>
   <div className='child'>
     <h2>React Redux Bank</h2>
     <h3>Let's get started!</h3>
     <Display balance={balance}/>
-    <Deposit doDeposit={doDeposit}/>
-    <Withdrawal doWithdrawal={doWithdrawal}/>
+    <Deposit doDeposit={onDeposit}/>
+    <Withdrawal doWithdrawal={onWithdrawal}/>
   </div>
 </div>;
 

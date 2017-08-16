@@ -8,26 +8,53 @@ This submodule contains simple Redux Bank application
 . add react-redux library:
 .. connect
 
+=== App container
+
+Bound all state and dispatches to component props:
+
 .App.jsx
 [source,jacascript]
 ----
-import { connect } from 'react-redux';
-import { doAction } from '../redux-store/actions';
-
 // same as: <SomeCmponent someValue={state.payload} .../>
 const mapStateToProps = state => ({
   someValue: state.payload,
 });
 
 // same as: <SomeCmponent onAction={this.doAction} .../>
+import { doAction } from '../redux-store/actions';
 const mapDispatchToProps = dispatch => ({
   onAction: payload => dispatch(onAction(payload)),
 });
 
 // so now we can pass our mappers to connect
-// and it will bound all to component props:
+import { connect } from 'react-redux';
 const ReactReduxApp = connect(mapStateToProps, mapDispatchToProps)(SomeComponent);
 export default ReactReduxApp;
+----
+
+=== Render main
+
+Using react context making each passed props in connect available
+inside any our components we will render on state change:
+
+.index.js
+[source,jacascript]
+----
+import { createStore } from 'redux';
+import reducer from './redux-store/reducer';
+
+const store = createStore(reducer);
+
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import ReactReduxApp from './App/App';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ReactReduxApp />
+  </Provider>,
+  document.getElementById('root')
+);
 ----
 
 == build, run, deploy
