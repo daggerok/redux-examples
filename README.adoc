@@ -4,3 +4,4 @@
 . link:01-react-bank/[React Bank]
 . link:02-redux-bank/[Redux Bank]
 . link:03-react-redux-bank/[React Redux Bank]
+. link:04-redux-devtools/[Redux DevTools]

@@ -1,0 +1,31 @@
+= React Redux Bank
+
+This submodule contains simple Redux Bank application
+
+. add redux library
+.. reducer (state, action, action.type, action.payload)
+.. store (createStore, subscribe, dispatch)
+. add react-redux library:
+.. connect
+. add redux-devtools
+
+=== installation
+
+. install chrome extension
+. update store
+
+.index.js
+[source,jacascript]
+----
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSTION__ && window.__REDUX_DEVTOOLS_EXTENSTION__()
+);
+----
+
+== build, run, deploy
+
+[source,bash]
+yarn start
+yarn build
+yarn deploy
