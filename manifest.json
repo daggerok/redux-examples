@@ -1,6 +1,6 @@
 {
-  "short_name": "React Redux App",
-  "name": "React Redux App",
+  "short_name": "Redux DevTools App",
+  "name": "Redux DevTools App",
   "icons": [
     {
       "src": "favicon.ico",
