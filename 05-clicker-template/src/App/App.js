@@ -11,7 +11,7 @@ const App = props => <div className='parent'>
     <h2>TODO App</h2>
     <h4>Let's get started!</h4>
     <div>{props.payload}</div>
-    <button onClick={() => {
+    <button className='waves-effect waves-light btn' onClick={() => {
       props.doSomething(props.payload);
     }}>click me</button>
   </div>
