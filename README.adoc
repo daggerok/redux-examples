@@ -5,3 +5,5 @@
 . link:02-redux-bank/[Redux Bank]
 . link:03-react-redux-bank/[React Redux Bank]
 . link:04-redux-devtools/[Redux DevTools]
+. link:05-clicker-template/[Clicker Template App]
+. link:06-todo/[TODO App]

@@ -1,0 +1,25 @@
+= TODO App
+
+This submodule contains simple Redux Bank application
+
+. add redux library
+.. reducer (state, action, action.type, action.payload)
+.. store (createStore, subscribe, dispatch)
+. add react-redux library:
+.. connect
+. add redux-devtools
+
+=== installation
+
+.somethere
+[source,jacascript]
+----
+// TODO
+----
+
+== build, run, deploy
+
+[source,bash]
+yarn start
+yarn build
+yarn deploy
