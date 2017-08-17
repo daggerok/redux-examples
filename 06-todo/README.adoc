@@ -9,14 +9,6 @@ This submodule contains simple Redux Bank application
 .. connect
 . add redux-devtools
 
-=== installation
-
-.somethere
-[source,jacascript]
-----
-// TODO
-----
-
 == build, run, deploy
 
 [source,bash]

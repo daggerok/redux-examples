@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+//
 import { doSomething } from '../redux-store/actions';
 
 const App = props => <div className='parent'>

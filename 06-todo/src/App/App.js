@@ -3,31 +3,40 @@ import './App.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import { doSomething } from '../redux-store/actions';
+//
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
+//
+import { addTodo, toggleTodo, deleteTodo } from '../redux-store/actions';
 
 const App = props => <div className='parent'>
   <div className='child'>
     <h2>TODO App</h2>
     <h4>Let's get started!</h4>
-    <div>{props.payload}</div>
-    <button className='waves-effect waves-light btn' onClick={() => {
-      props.doSomething(props.payload);
-    }}>click me</button>
+    <AddTodo addTodo={props.addTodo}/>
+    <TodoList
+      todoList={props.todoList}
+      toggleTodo={props.toggleTodo}
+      deleteTodo={props.deleteTodo}
+    />
   </div>
 </div>;
 
 App.propTypes = {
-  payload: PropTypes.number,
-  doSomething: PropTypes.func,
+  todoList: PropTypes.array,
+  addTodo: PropTypes.func,
+  toggleTodo: PropTypes.func,
+  deleteTodo: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
-  payload: state.payload,
+  todoList: state.todoList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  doSomething: payload => dispatch(doSomething(payload))
+  addTodo: title => dispatch(addTodo(title)),
+  toggleTodo: title => dispatch(toggleTodo(title)),
+  deleteTodo: title => dispatch(deleteTodo(title)),
 });
 
 const TodoApp = connect(mapStateToProps, mapDispatchToProps)(App);
