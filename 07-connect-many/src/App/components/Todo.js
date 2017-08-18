@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteTodo, toggleTodo } from '../../redux-store/actions';
 
 const Todo = ({ title, done, toggleTodo, deleteTodo, }) => <li className='row'>
   <input
@@ -18,10 +20,18 @@ const Todo = ({ title, done, toggleTodo, deleteTodo, }) => <li className='row'>
 </li>;
 
 Todo.propTypes = {
-  title: PropTypes.string,
-  done: PropTypes.bool,
-  toggleTodo: PropTypes.func,
-  deleteTodo: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
+  toggleTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
 };
 
-export default Todo;
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  toggleTodo: title => dispatch(toggleTodo(title)),
+  deleteTodo: title => dispatch(deleteTodo(title)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

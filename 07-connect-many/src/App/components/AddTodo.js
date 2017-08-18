@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addTodo } from "../../redux-store/actions";
+import { addTodo } from '../../redux-store/actions';
 
 const AddTodo = ({ addTodo }) => {
   let input;
@@ -12,13 +12,13 @@ const AddTodo = ({ addTodo }) => {
       addTodo(input.value);
       input.value = '';
     }}>
-      <input type="text" ref={ref => input = ref}/>
+      <input type='text' ref={ref => input = ref}/>
     </form>
   );
 };
 
 AddTodo.propTypes = {
-  addTodo: PropTypes.func,
+  addTodo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({});

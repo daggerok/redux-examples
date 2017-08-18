@@ -1,35 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Todo from './Todo';
-import { connect } from "react-redux";
-import { deleteTodo, toggleTodo } from "../../redux-store/actions";
+import { connect } from 'react-redux';
 
-const TodoList = ({ todoList, toggleTodo, deleteTodo, }) => <ul>
+const TodoList = ({ todoList, }) => <ul>
   {
     todoList && todoList.map((todo, key) =>
-      <Todo
-        key={key}
-        {...todo}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-      />
+      <Todo key={key} {...todo}/>
     )
   }
 </ul>;
 
 TodoList.propTypes = {
-  todoList: PropTypes.array.isRequired,
-  toggleTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
+  todoList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      done: PropTypes.bool.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 const mapStateToProps = state => ({
   todoList: state.todoList,
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleTodo: title => dispatch(toggleTodo(title)),
-  deleteTodo: title => dispatch(deleteTodo(title)),
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
