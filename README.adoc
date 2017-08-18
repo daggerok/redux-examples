@@ -7,3 +7,4 @@
 . link:04-redux-devtools/[Redux DevTools]
 . link:05-clicker-template/[Clicker Template App]
 . link:06-todo/[TODO App]
+. link:07-todo-connect-many/[Connect many components]
