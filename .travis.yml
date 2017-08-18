@@ -26,7 +26,7 @@ script:
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     done;
   - >
-    for path in 06-todo 05-clicker-template \
+    for path in 07-connect-many 06-todo 05-clicker-template \
                 04-redux-devtools 03-react-redux-bank \
                 02-redux-bank 01-react-bank 0-template; do
       export TARGET="$ROOT/$path";
