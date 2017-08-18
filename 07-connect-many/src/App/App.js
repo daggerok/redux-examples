@@ -22,5 +22,5 @@ const TodoApp = () => <div className='parent'>
 </div>;
 
 export default () => <Provider store={store}>
-  <TodoApp />
+  <TodoApp/>
 </Provider>;
