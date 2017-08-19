@@ -27,9 +27,14 @@ script:
     done;
   - >
     for path in 08-combine-reducers \
-                07-connect-many 06-todo 05-clicker-template \
-                04-redux-devtools 03-react-redux-bank \
-                02-redux-bank 01-react-bank 0-template; do
+                07-connect-many \
+                06-todo \
+                05-clicker-template \
+                04-redux-devtools \
+                03-react-redux-bank \
+                02-redux-bank \
+                01-react-bank \
+                0-template; do
       export TARGET="$ROOT/$path";
       cd $TARGET;
       yarn install;
