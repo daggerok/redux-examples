@@ -26,7 +26,9 @@ script:
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     done;
   - >
-    for path in 08-combine-reducers \
+    for path in 10-async-redux-with-rest-api \
+                09-apply-middleware \
+                08-combine-reducers \
                 07-connect-many \
                 06-todo \
                 05-clicker-template \

@@ -1,5 +1,10 @@
+.gradle/
 jquery.slim.min.js
 .idea/
+*.iml
+*.ipw
+*.iws
+out/
 .DS_Store
 yarn.lock
 

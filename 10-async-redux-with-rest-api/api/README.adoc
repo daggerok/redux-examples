@@ -1,0 +1,38 @@
+= TODO App API
+
+.create todo:
+
+[source,bash]
+http post :8080 title=ololo
+http post :8080 title=trololo done=true
+
+.get todo by title:
+
+[source,bash]
+http get :8080/ololo
+http get :8080/trololo
+
+.find todo by title containing:
+
+[source,bash]
+http get :8080/find/olo
+
+.get all todo:
+
+[source,bash]
+http :8080/all
+
+.complete todo:
+
+[source,bash]
+http :8080/complete
+
+.incomplete todo:
+
+[source,bash]
+http :8080/incomplete
+
+.delete todo
+
+[source,bash]
+http delete :8080/trololo
