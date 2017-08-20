@@ -11,9 +11,9 @@ export const fetchInitialData = () => {
     fetch('https://daggerok.github.io/redux-examples/api/contactList.json', {mode: 'cors'})
       .then(resp => resp.text())
       .then(text => !!text ? JSON.parse(text) : null)
-      .then(obj => dispatch({
+      .then(contacts => dispatch({
         type: FETCH_DATA_RESPONSE,
-        payload: obj,
+        payload: contacts,
         fetchedAt: Date.now(),
       }));
   }

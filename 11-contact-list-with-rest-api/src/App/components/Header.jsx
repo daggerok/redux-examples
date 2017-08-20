@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchInitialData } from '../../redux/actions/async';
 
 const Header = ({ fetchInitialData }) => <div>
-  <h2 className='header' onClick={fetchInitialData}>Contact List</h2>
+  <h3 className='header' onClick={fetchInitialData}>Contact List</h3>
 </div>;
 
 Header.propTypes = {

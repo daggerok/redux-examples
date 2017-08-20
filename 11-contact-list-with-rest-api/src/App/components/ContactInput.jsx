@@ -8,7 +8,7 @@ const ContactInput = ({ addContact }) => {
   return (
     <div className='col s12'>
       <div className='row'>
-        <span className='input-field col s5'>
+        <span className='input-field col s6'>
           <input
             type='text'
             id='contact-name'
@@ -19,7 +19,7 @@ const ContactInput = ({ addContact }) => {
             <i className='material-icons small left'>account_circle</i>
           </label>
         </span>
-        <span className='input-field col s6'>
+        <span className='input-field col s5'>
           <input
             placeholder='phone, email, URL, address, etc'
             ref={input => phoneRef = input}
@@ -32,7 +32,7 @@ const ContactInput = ({ addContact }) => {
         </span>
         <span className='input-field col s1'>
           <i onClick={e => addContact(e, nameRef, phoneRef)}
-             className='material-icons small right'>save</i>
+             className='material-icons small right'>add</i>
         </span>
       </div>
     </div>

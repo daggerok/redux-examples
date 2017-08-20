@@ -14,8 +14,8 @@ const ContactList = ({ contactList }) => <div>
 ContactList.propTypes = {
   contactList: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      phone: PropTypes.string,
     }).isRequired,
   ).isRequired,
 };
