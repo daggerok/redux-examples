@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import todoList from './todoList';
-import filter from './filter';
+import contactList from './contactList';
 
 export default combineReducers({
-  todoList,
-  filter,
+  contactList,
 });

@@ -7,9 +7,8 @@ export const fetchInitialData = () => {
       type: FETCH_DATA_REQUEST,
       fetchingAt: Date.now(),
     });
-    // // CORS Webflux Filter must be configured or use FQDN API:
-    fetch('https://daggerok.github.io/redux-examples/api/all.json')
-    // fetch('http://localhost:8080/all', {mode: 'cors'}) // see api project: CorsWebfluxFilter.java
+    // CORS Filter must be configured or use FQDN API (see api: CorsWebfluxFilter.java)
+    fetch('https://daggerok.github.io/redux-examples/api/contactList.json', {mode: 'cors'})
       .then(resp => resp.text())
       .then(text => !!text ? JSON.parse(text) : null)
       .then(obj => dispatch({

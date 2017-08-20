@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchInitialData } from '../../redux/actions/async';
 
-const Header = ({ fetchInitialData }) => <div className='row'>
-  <h4 onClick={fetchInitialData}>contact list</h4>
+const Header = ({ fetchInitialData }) => <div>
+  <h2 className='header' onClick={fetchInitialData}>Contact List</h2>
 </div>;
 
 Header.propTypes = {
