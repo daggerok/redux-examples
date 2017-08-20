@@ -11,6 +11,9 @@ This submodule contains simple Redux Bank application
 . connect many sub-components
 . use combineReducers to group few reducers (implement filtering todoList by it's done value)
 . use applyMiddleware
+. add TODO REST API
+. use async action creator (fet TODOs from API)
+. add CORS Filter on webflux REST API server side: `api/src/main/java/daggerok/api/CorsWebfluxFilter.java`
 
 === applyMiddleware
 

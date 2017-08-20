@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -17,9 +16,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import static java.util.Arrays.asList;
 import static java.util.Objects.isNull;
-import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.ServerResponse.accepted;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
@@ -45,7 +42,7 @@ public class ApiApplication {
     }
   }
 
-  static final ConcurrentSkipListSet<Todo> todoList = new ConcurrentSkipListSet<>(
+  static final ConcurrentSkipListSet<Todo> db = new ConcurrentSkipListSet<>(
       asList(
           new Todo().setTitle("Todo is done.").setDone(true),
           new Todo().setTitle("Todo in progress.")
@@ -61,7 +58,7 @@ public class ApiApplication {
 
               return accepted().body(request.bodyToFlux(Todo.class)
                                             .map(t -> {
-                                              todoList.add(t);
+                                              db.add(t);
                                               return URI.create(t.title);
                                             })
                                             .map(URI::toASCIIString)
@@ -72,7 +69,7 @@ public class ApiApplication {
                 DELETE("/{title}"),
                 request -> accepted().body(
                     Flux.just(
-                        todoList.removeIf(t -> t.title.equals(request.pathVariable("title")))
+                        db.removeIf(t -> t.title.equals(request.pathVariable("title")))
                             ? "OK" : "KO"),
                     String.class
                 )
@@ -84,18 +81,18 @@ public class ApiApplication {
             )
             .andRoute(
                 GET("/all"),
-                request -> ok().body(Flux.fromIterable(todoList),
+                request -> ok().body(Flux.fromIterable(db),
                                      Todo.class)
             )
             .andRoute(
                 GET("/complete"),
-                request -> ok().body(Flux.fromIterable(todoList)
+                request -> ok().body(Flux.fromIterable(db)
                                          .filter(Todo::isDone),
                                      Todo.class)
             )
             .andRoute(
                 GET("/incomplete"),
-                request -> ok().body(Flux.fromIterable(todoList)
+                request -> ok().body(Flux.fromIterable(db)
                                          .filter(todo -> !todo.done),
                                      Todo.class)
             )
@@ -107,7 +104,7 @@ public class ApiApplication {
             )
             .andRoute(
                 GET("/find/{title}"),
-                request -> ok().body(Flux.fromIterable(todoList)
+                request -> ok().body(Flux.fromIterable(db)
                                          .filter(todo -> todo.title.toLowerCase()
                                                                    .contains(request.pathVariable("title")
                                                                                     .toLowerCase())),
@@ -115,10 +112,11 @@ public class ApiApplication {
             )
             .andRoute(
                 GET("/{title}"),
-                request -> ok().body(Mono.justOrEmpty(todoList.stream()
-                                                              .filter(todo -> todo.title.equals(request.pathVariable("title")))
-                                                              .findFirst()),
-                                                      Todo.class)
+                request -> ok().body(Mono.justOrEmpty(db.stream()
+                                                        .filter(todo -> todo.title.equals(request.pathVariable(
+                                                            "title")))
+                                                        .findFirst()),
+                                     Todo.class)
             )
             .andRoute(
                 GET("/**"),

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteTodo, toggleTodo } from '../../redux/actions/todo';
 
-const Todo = ({ title, done, toggleTodo, deleteTodo, }) => <li className='row'>
+const Todo = ({ title, done, toggleTodo, deleteTodo }) => <li className='row'>
   <input
     checked={done}
     type='checkbox'
@@ -27,11 +27,9 @@ Todo.propTypes = {
   deleteTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = dispatch => ({
   toggleTodo: title => dispatch(toggleTodo(title)),
   deleteTodo: title => dispatch(deleteTodo(title)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todo);
+export default connect(null, mapDispatchToProps)(Todo);

@@ -1,9 +1,13 @@
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from '../actions/todo';
+import { FETCH_TODOS_RESPONSE } from '../actions/async';
 
 /** todoList reducer */
 export default (state = [], action) => {
 
   switch (action.type) {
+
+    case FETCH_TODOS_RESPONSE:
+      return action.payload;
 
     case ADD_TODO:
 

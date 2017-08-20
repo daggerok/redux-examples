@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from "../redux/store";
+import Header from './components/Header';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
 import Filter from "./components/Filter";
@@ -9,7 +10,7 @@ import Filter from "./components/Filter";
 const TodoApp = () => <div className='parent'>
   <div className='child'>
     <h2>TODO App</h2>
-    <h4>Let's get started!</h4>
+    <Header/>
     <AddTodo/>
     <Filter/>
     <TodoList/>

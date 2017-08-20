@@ -21,10 +21,8 @@ AddTodo.propTypes = {
   addTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = dispatch => ({
   addTodo: title => dispatch(addTodo(title)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+export default connect(null, mapDispatchToProps)(AddTodo);
