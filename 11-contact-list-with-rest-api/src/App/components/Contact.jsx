@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Contact = ({ contact }) => <div className='row'>
-  <div className='col s4'>
+  <div className='col s5'>
     <span className='flow-text'>{contact.name}</span>
   </div>
-  <div className='col s8'>
+  <div className='col s6'>
     <span className='flow-text'>{contact.phone}</span>
   </div>
 </div>;

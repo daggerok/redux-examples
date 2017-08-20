@@ -1,5 +1,6 @@
 = redux-examples image:https://travis-ci.org/daggerok/redux-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/redux-examples"]
 
+. link:0-template/[React Template App]
 . link:00-reducer/[Reducer App]
 . link:01-react-bank/[React Bank]
 . link:02-redux-bank/[Redux Bank]
@@ -7,4 +8,8 @@
 . link:04-redux-devtools/[Redux DevTools]
 . link:05-clicker-template/[Clicker Template App]
 . link:06-todo/[TODO App]
-. link:07-todo-connect-many/[Connect many components]
+. link:07-todo-connect-many/[TODO App: connect many components]
+. link:08-combine-reducers/[TODO App: combine reducers into rootReducer]
+. link:09-apply-middleware/[TODO App: apply redux middleware]
+. link:10-async-redux-with-rest-api/[TODO App: redux thunk - async actions]
+. link:11-contact-list-with-rest-api/[Contact List App]

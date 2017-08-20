@@ -8,27 +8,31 @@ const ContactInput = ({ addContact }) => {
   return (
     <div className='col s12'>
       <div className='row'>
-        <span className='input-field col s4'>
+        <span className='input-field col s5'>
           <input
             type='text'
             id='contact-name'
-            placeholder='Name or company'
+            placeholder='name company or service'
             ref={input => nameRef = input}
           />
-          <label htmlFor='contact-name'>Name</label>
+          <label htmlFor='contact-name'>
+            <i className='material-icons small left'>account_circle</i>
+          </label>
         </span>
-        <span className='input-field col s7'>
+        <span className='input-field col s6'>
           <input
+            placeholder='phone, email, URL, address, etc'
             ref={input => phoneRef = input}
-            placeholder='Phone, email, address, etc'
             id='contact-phone'
             type='text'
           />
-          <label htmlFor='contact-phone'>Name</label>
+          <label htmlFor='contact-name'>
+            <i className='material-icons small left'>perm_phone_msg</i>
+          </label>
         </span>
         <span className='input-field col s1'>
           <i onClick={e => addContact(e, nameRef, phoneRef)}
-             className='material-icons right'>save</i>
+             className='material-icons small right'>save</i>
         </span>
       </div>
     </div>
@@ -42,6 +46,7 @@ ContactInput.propTypes = {
 const mapDispatchToProps = dispatch => ({
   addContact: (event, nameRef, phoneRef) => {
     event.preventDefault();
+    if (event.keyCode && event.keyCode !== 13) return;
     if (!nameRef.value || !phoneRef.value) return;
     const name = nameRef.value.trim();
     const phone = phoneRef.value.trim();
