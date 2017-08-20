@@ -1,0 +1,8 @@
+= Contact list
+
+== build, run, deploy
+
+[source,bash]
+yarn start
+yarn build
+yarn deploy
