@@ -30,10 +30,12 @@ const ContactInput = ({ addContact }) => {
             <i className='material-icons small left'>perm_phone_msg</i>
           </label>
         </span>
-        <span className='input-field col s1'>
-          <i onClick={e => addContact(e, nameRef, phoneRef)}
-             className='material-icons small right'>save</i>
-        </span>
+        {
+          <span className='input-field col s1'>
+            <i onClick={e => addContact(e, nameRef, phoneRef)}
+               className='material-icons small right'>save</i>
+          </span>
+        }
       </div>
     </div>
   );
@@ -47,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
   addContact: (event, nameRef, phoneRef) => {
     event.preventDefault();
     if (event.keyCode && event.keyCode !== 13) return;
-    if (!nameRef.value || !phoneRef.value) return;
+    if (!nameRef || !phoneRef || !nameRef.value || !phoneRef.value) return;
     const name = nameRef.value.trim();
     const phone = phoneRef.value.trim();
     dispatch(addContact({ name, phone, }));
